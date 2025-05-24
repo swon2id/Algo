@@ -16,16 +16,18 @@ public class Main {
         st = new StringTokenizer(br.readLine());
 
         ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> sortedList = new ArrayList<>();
         while(st.hasMoreTokens()) {
-            list.add(Integer.parseInt(st.nextToken()));
+            int elem = Integer.parseInt(st.nextToken());
+            list.add(elem);
+            sortedList.add(elem);
         }
 
-        ArrayList<Integer> copy = new ArrayList<>(list);
-        copy.sort(Comparator.naturalOrder());
+        sortedList.sort(Comparator.naturalOrder());
         HashMap<Integer, Integer> orderTable = new HashMap<>();
 
         int compressedIndex = 0;
-        for (int e: copy) {
+        for (int e: sortedList) {
             if (orderTable.containsKey(e)) continue;
             orderTable.put(e, compressedIndex++);
         }
@@ -37,11 +39,4 @@ public class Main {
         sb.setLength(sb.length()-1);
         System.out.print(sb);
     }
-
 }
-
-//전체 요소 정렬
-//
-//정렬된 요소를 key로 value를 0부터 채움
-//
-//원본 요소를 출력할 때 mapping 함
