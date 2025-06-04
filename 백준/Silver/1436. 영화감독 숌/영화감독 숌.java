@@ -15,13 +15,18 @@ public class Main {
 			int count = 1;
 			
 			while (count != N) {
-				num++;
-				if (String.valueOf(num).contains("666")) {
-					count++;
-				}
+				if (has666(++num)) count++;
 			}
 		}			
 		
 		System.out.print(num);
+	}
+	
+	private static boolean has666(int num) {
+		while (num > 99) {
+			if (num % 1000 == 666) return true;
+			num = num / 10;
+		}
+		return false;
 	}
 }
