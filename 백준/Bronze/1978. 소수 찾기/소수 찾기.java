@@ -26,7 +26,7 @@ public class Main {
 	private static boolean isPrime(int num) {
 		if (memo[num] != null) return memo[num];
 		
-		for (int i = 2; i < num; i++) {
+		for (int i = 2; i <= Math.sqrt(num); i++) {
 			if (num % i != 0) continue;
 			
 			memo[num] = false;
