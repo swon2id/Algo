@@ -5,35 +5,26 @@ import java.util.StringTokenizer;
 
 
 public class Main {
-	static Boolean[] memo = new Boolean[1001];
+	static boolean[] isPrimeNumList = new boolean[1001];
 	
 	public static void main(String[] args) throws IOException {
-		memo[1] = false;
-		memo[2] = true;
+		for (int i = 2; i <= 1000; i++) isPrimeNumList[i] = true;
+		for (int i = 2; i * i <= 1000; i++) {
+			if (isPrimeNumList[i]) {
+				for (int j = i * i; j <= 1000; j += i) isPrimeNumList[j] = false;
+			}
+		}
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
 		
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		br.close();
 		int res = 0;
 		for (int i = 0; i < N; i++) {
-			if ( isPrime(Integer.parseInt(st.nextToken())) ) res++;
+			if ( isPrimeNumList[Integer.parseInt(st.nextToken())]) res++;
 		}
 		
 		System.out.print(res);
-	}
-	
-	private static boolean isPrime(int num) {
-		if (memo[num] != null) return memo[num];
-		
-		for (int i = 2; i <= Math.sqrt(num); i++) {
-			if (num % i != 0) continue;
-			
-			memo[num] = false;
-			return false;
-		}			
-		
-		memo[num] = true;
-		return true;
 	}
 }
