@@ -17,6 +17,7 @@ import java.util.StringTokenizer;
 */
 
 public class Main {
+	static int N, M;
 	static int[] nums;
 	static boolean[] visited;
 	static StringBuilder answer = new StringBuilder();
@@ -26,19 +27,19 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		br.close();
 		
-		int N = Integer.parseInt(st.nextToken());
-		int M = Integer.parseInt(st.nextToken());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 		
 		nums = new int[M];
 		visited = new boolean[N+1];
 		
-		recur(0, N);
+		recur(0);
 		answer.setLength(answer.length() - 1);
 		System.out.print(answer);
 	}
 	
-	static void recur(int index, int N) {
-		if (index == nums.length) {
+	static void recur(int index) {
+		if (index == M) {
 			answer.append(intArrToStr(nums, " ")).append("\n");
 			return;
 		}
@@ -48,7 +49,7 @@ public class Main {
 				if (index == 0 || nums[index-1] < i) {
 					visited[i] = true;
 					nums[index] = i;
-					recur(index+1, N);
+					recur(index+1);
 					visited[i] = false;
 				}
 			}
