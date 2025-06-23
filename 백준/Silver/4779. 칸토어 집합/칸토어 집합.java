@@ -12,8 +12,8 @@ public class Main {
 		
 		while ((input = br.readLine()) != null) {
 			int N = Integer.parseInt(input);
-			String line = "-".repeat((int)Math.pow(3, N));
-			sb.append(kantoa(line)).append("\n");
+			int length = (int)Math.pow(3, N);
+			sb.append(kantoa(length)).append("\n");
 		}
 		br.close();
 		
@@ -22,15 +22,10 @@ public class Main {
 
 	}
 	
-	static String kantoa(String line) {
-		int length = line.length();
-		if (length > 1) {
-			int lengthDividedBy3 = length / 3;
-			String left = line.substring(0, lengthDividedBy3);
-			String right = line.substring(lengthDividedBy3 * 2, length);
-			return kantoa(left) + " ".repeat(lengthDividedBy3) + kantoa(right);
-		}
-		return "-";
+	static String kantoa(int length) {
+		if (length <= 1) return "-";
+
+		int lengthDividedBy3 = length / 3;
+		return kantoa(lengthDividedBy3) + " ".repeat(lengthDividedBy3) + kantoa(lengthDividedBy3);
 	}
 }
-
