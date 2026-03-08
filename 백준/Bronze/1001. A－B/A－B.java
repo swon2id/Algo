@@ -5,10 +5,9 @@ import java.io.IOException;
 class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String inputLine = br.readLine();
-		int[] nums = Main.parseInts(inputLine);
+		int[] nums = Main.parseInts(br.readLine());
 		
-		StringBuilder sb = new StringBuilder();
+		// StringBuilder sb = new StringBuilder();
 		// for (int num : nums) {
 		//  	sb.append(num).append('\n');
 		// }
