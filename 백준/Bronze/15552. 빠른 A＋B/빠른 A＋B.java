@@ -7,7 +7,7 @@ class Main {
 	public static void main(String[] args) throws IOException {		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
-		int cases = Integer.parseInt(new StringTokenizer(br.readLine()).nextToken());
+		int cases = Integer.parseInt(br.readLine());
 		
 		for (int i = 0; i < cases; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
